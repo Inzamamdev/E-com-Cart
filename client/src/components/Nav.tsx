@@ -5,13 +5,18 @@ import { IoCloseSharp } from "react-icons/io5";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { HiX } from "react-icons/hi";
 import { HiMenu } from "react-icons/hi";
-
+import { useNavigate } from "react-router-dom";
 const firstLink = [
   { name: "Sell on Ecom", href: "/" },
   { name: "Register", href: "/" },
 ];
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate("/cart");
+  };
   return (
     <header className="w-full bg-gray-100 text-gray-600 shadow-sm px-4 md:px-5">
       <div className="flex justify-between items-center py-2">
@@ -53,7 +58,10 @@ function Nav() {
             <button className="px-5 py-1 border border-violet-700 rounded-lg hover:bg-violet-700 hover:text-white transition">
               Sign In
             </button>
-            <button className="flex items-center gap-2 px-5 py-1 bg-white rounded-lg hover:bg-gray-800 hover:text-white transition shadow-md">
+            <button
+              onClick={handleRedirect}
+              className="flex items-center gap-2 px-5 py-1 bg-white rounded-lg hover:bg-gray-800 hover:text-white transition shadow-md"
+            >
               <MdOutlineShoppingCart className="text-lg" />
               <span>Cart</span>
             </button>
