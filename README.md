@@ -76,8 +76,16 @@ node server.js - on server
 
 ## Env set up
 
+### Server env
+
 ```bash
 MONGO_URI=mongodb+srv://<your-connection-string>
 PORT=5000
-FAKE_STORE_API=https://fakestoreapi.com/products
+CLIENT_API_URL=your-client-url
+```
+
+### CLient env
+
+```bash
+VITE_API_URL=your-client-url
 ```
