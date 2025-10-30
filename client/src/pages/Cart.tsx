@@ -60,7 +60,7 @@ const Cart: React.FC = () => {
       name: form.name,
       email: form.email,
       items: cartItems,
-      total: (totalPrice + 5).toFixed(2),
+      total: totalPrice.toFixed(2),
     };
     setReceiptData(receipt);
     setShowModal(true);
@@ -135,18 +135,16 @@ const Cart: React.FC = () => {
             <h3 className="text-xl font-semibold text-purple-700 mb-4">
               Order Summary
             </h3>
+
             <div className="flex justify-between text-gray-700 mb-2">
-              <span>Subtotal</span>
+              <span>Subtotal ({cartItems.length} items)</span>
               <span>${totalPrice.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between text-gray-700 mb-2">
-              <span>Shipping</span>
-              <span>$5.00</span>
-            </div>
+
             <hr className="my-3 border-purple-300" />
             <div className="flex justify-between text-lg font-semibold text-purple-800">
               <span>Total</span>
-              <span>${(totalPrice + 5).toFixed(2)}</span>
+              <span>${totalPrice.toFixed(2)}</span>
             </div>
           </div>
 
