@@ -1,12 +1,24 @@
 import { useState, useCallback } from "react";
 
+type Product = {
+  id: number;
+  image: string;
+  category: string;
+  description: string;
+  price: number;
+  title: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+};
 const useFetch = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const fetchData = useCallback(
-    async (url: string, method = "GET", body = null) => {
+    async (url: string, method = "GET", body: any = null) => {
       if (!url) return;
 
       setLoading(true);

@@ -55,7 +55,7 @@ function Nav() {
             </button>
             <button className="flex items-center gap-2 px-5 py-1 bg-white rounded-lg hover:bg-gray-800 hover:text-white transition shadow-md">
               <MdOutlineShoppingCart className="text-lg" />
-              <span>Add to Cart</span>
+              <span>Cart</span>
             </button>
           </div>
 
