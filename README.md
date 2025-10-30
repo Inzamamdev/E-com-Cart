@@ -87,5 +87,5 @@ CLIENT_API_URL=your-client-url
 ### CLient env
 
 ```bash
-VITE_API_URL=your-client-url
+VITE_API_URL=your-server-url
 ```
