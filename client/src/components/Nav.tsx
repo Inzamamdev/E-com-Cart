@@ -22,16 +22,17 @@ function Nav() {
       <div className="flex justify-between items-center py-2">
         <div className="flex items-center gap-4">
           {/* Logo */}
-          <div className="flex items-center gap-1">
-            <img
-              src="../src/assets/ecom-logo.png"
-              alt="Logo"
-              width={45}
-              className="block"
-            />
-            <span className="text-black text-2xl font-bold">Ecom</span>
-          </div>
-
+          <Link to="/">
+            <div className="flex items-center gap-1">
+              <img
+                src="../src/assets/ecom-logo.png"
+                alt="Logo"
+                width={45}
+                className="block"
+              />
+              <span className="text-black text-2xl font-bold">Ecom</span>
+            </div>
+          </Link>
           {/* Nav Links */}
           <nav className="hidden md:flex gap-3 text-gray-700">
             {firstLink.map((link, ind) => (
@@ -58,13 +59,12 @@ function Nav() {
             <button className="px-5 py-1 border border-violet-700 rounded-lg hover:bg-violet-700 hover:text-white transition">
               Sign In
             </button>
-            <button
-              onClick={handleRedirect}
-              className="flex items-center gap-2 px-5 py-1 bg-white rounded-lg hover:bg-gray-800 hover:text-white transition shadow-md"
-            >
-              <MdOutlineShoppingCart className="text-lg" />
-              <span>Cart</span>
-            </button>
+            <Link to="/cart">
+              <button className="flex items-center gap-2 px-5 py-1 bg-white rounded-lg hover:bg-gray-800 hover:text-white transition shadow-md cursor-pointer">
+                <MdOutlineShoppingCart className="text-lg" />
+                <span>Cart</span>
+              </button>
+            </Link>
           </div>
 
           {/* Hamburger Menu */}

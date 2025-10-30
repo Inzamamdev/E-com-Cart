@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# 🛒 Mock E-Com Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **full-stack shopping cart application** built as part of the **Vibe Commerce Full Stack Coding Assignment**.  
+It demonstrates a complete e-commerce flow — from fetching products to adding them to a cart, updating quantities, checking out, and viewing a receipt — all using a modular architecture and clean UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## React Compiler
+### **Frontend**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ⚛️ React + TypeScript
+- 🎨 Tailwind CSS for responsive styling
+- 🔗 React Icons
+- 🌐 Custom `useFetch` hook for API requests
 
-## Expanding the ESLint configuration
+### **Backend**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🧩 Node.js + Express.js
+- 🗄️ MongoDB for cart persistence
+- 📦 Fake Store API for mock product data
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🧠 Core Features
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 🖥️ **Frontend**
+
+- Responsive product grid layout
+- Product cards with:
+  - Image, title, price, rating
+  - Quantity counter and “Add to Cart” button
+- Shopping Cart page:
+  - View all added items
+  - Increase/decrease quantity or remove items
+  - Real-time total price updates
+- Checkout form:
+  - Collects name and email
+  - Displays a mock receipt modal upon submission
+- Clean and minimal purple-themed UI
+
+### ⚙️ **Backend APIs**
+
+| Method   | Endpoint        | Description                                   |
+| -------- | --------------- | --------------------------------------------- |
+| `GET`    | `/api/products` | Fetch 5–10 mock items from Fake Store API     |
+| `POST`   | `/api/cart`     | Add product to cart `{ productId, quantity }` |
+| `GET`    | `/api/cart`     | Fetch cart items + total                      |
+| `DELETE` | `/api/cart/:id` | Remove an item from cart                      |
+| `PUT`    | `/api/cart/:id` | Update item quantity                          |
+| `POST`   | `/api/checkout` | Returns a mock receipt (total, timestamp)     |
+
+> 🧩 **Note:**  
+> Only `{ productId, quantity }` are stored in MongoDB.  
+> Full product details are fetched on-demand from the **Fake Store API** and merged on the backend before sending to the frontend — optimizing performance and data consistency.
+
+---
+
+## ⚡ Setup Instructions
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/yourusername/mock-ecom-cart.git
+cd mock-ecom-cart
+
+cd server
+npm install
+
+cd client
+npm install
+
+npm run dev - on client
+node server.js - on server
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Env set up
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+MONGO_URI=mongodb+srv://<your-connection-string>
+PORT=5000
+FAKE_STORE_API=https://fakestoreapi.com/products
 ```
