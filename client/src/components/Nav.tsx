@@ -18,7 +18,7 @@ function Nav() {
     navigate("/cart");
   };
   return (
-    <header className="w-full bg-gray-100 text-gray-600 shadow-sm px-4 md:px-5">
+    <header className="w-full sticky top-0 z-50 bg-gray-100 text-gray-600 shadow-sm px-4 md:px-5">
       <div className="flex justify-between items-center py-2">
         <div className="flex items-center gap-4">
           {/* Logo */}
